@@ -6,7 +6,7 @@
 /*   By: psaulnie <psaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 09:27:19 by psaulnie          #+#    #+#             */
-/*   Updated: 2021/12/20 13:52:35 by psaulnie         ###   ########.fr       */
+/*   Updated: 2021/12/20 13:55:31 by psaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_img {
 	int		width;
 	int		height;
 	t_pos	position;
-	e_type	type;
+	t_type	type;
 }				t_img;
 
 #endif
