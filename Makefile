@@ -6,11 +6,11 @@
 #    By: psaulnie <psaulnie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/06 13:55:52 by psaulnie          #+#    #+#              #
-#    Updated: 2021/12/20 09:40:44 by psaulnie         ###   ########.fr        #
+#    Updated: 2021/12/20 14:56:48 by psaulnie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.c
+SRCS = main.c parsing.c
 LIBFT = libft/
 MLX = minilibx/
 CFLAGS = -Wall -Wextra -Werror
@@ -40,8 +40,5 @@ re: fclean all
 
 libft:
 		make -C ${LIBFT}
-
-minilibx:
-		
 
 .PHONY:	all clean fclean re libft
