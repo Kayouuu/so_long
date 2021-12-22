@@ -6,11 +6,11 @@
 #    By: psaulnie <psaulnie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/06 13:55:52 by psaulnie          #+#    #+#              #
-#    Updated: 2021/12/20 14:56:48 by psaulnie         ###   ########.fr        #
+#    Updated: 2021/12/22 18:12:57 by psaulnie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.c parsing.c
+SRCS = main.c parsing.c sprites.c
 LIBFT = libft/
 MLX = minilibx/
 CFLAGS = -Wall -Wextra -Werror
