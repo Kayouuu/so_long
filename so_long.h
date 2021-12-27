@@ -6,14 +6,14 @@
 /*   By: psaulnie <psaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 09:27:19 by psaulnie          #+#    #+#             */
-/*   Updated: 2021/12/22 17:20:21 by psaulnie         ###   ########.fr       */
+/*   Updated: 2021/12/27 11:48:32 by psaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "minilibx/mlx.h"
+# include <mlx.h>
 # include "libft/libft.h"
 
 # include <stdlib.h>
@@ -35,17 +35,17 @@
 
 typedef enum e_type
 {
-	WALL,
 	COLLECTIBLE,
-	SPACE,
 	PLAYER,
 	EXIT
 }				t_type;
 
-typedef struct s_size {
-	int	width;
-	int	height;
-}				t_size;
+typedef struct s_map
+{
+	char	**map;
+	char	**map_backup;
+	char	**sprites;
+}				t_map;
 
 typedef struct s_mlx {
 	void	*mlx;
@@ -57,16 +57,24 @@ typedef struct s_pos {
 	int	y;
 }				t_pos;
 
-typedef struct s_img {
+typedef struct s_obj {
 	void	*img;
 	char	*addr;
-	char	*relative_path;
-	t_size	size;
-	t_pos	position;
+	t_pos	pos;
 	t_type	type;
-}				t_img;
+}				t_obj;
+
+typedef struct s_data
+{
+	t_map	map;
+	t_mlx	mlx;
+}				t_data;
 
 /*	MAIN.C	*/
+
+/*	INPUT.C	*/
+
+int	input(int key, t_data *data);
 
 /*	PARSING.C	*/
 
@@ -74,7 +82,14 @@ char	**parsing(char *map);
 
 /*	SPRITES.C	*/
 
+void	draw(char obj, t_pos pos, char **sprites, t_mlx mlx);
 void	draw_map(t_mlx mlx, char **sprites, char **map);
 char	**get_sprites(void *mlx);
+
+/*	UPDATE.C	*/
+
+void	get_player_pos(t_obj *player, char **map);
+void	update_map(char **old_map, char **map, char **sprites, t_mlx mlx);
+char	**backup_map(char **map);
 
 #endif

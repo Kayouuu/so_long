@@ -6,15 +6,14 @@
 /*   By: psaulnie <psaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 14:21:00 by psaulnie          #+#    #+#             */
-/*   Updated: 2021/12/22 17:27:56 by psaulnie         ###   ########.fr       */
+/*   Updated: 2021/12/26 15:51:46 by psaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	draw(char obj, t_pos pos, char **sprites, t_mlx mlx)
+void	draw(char obj, t_pos pos, char **sprites, t_mlx mlx)
 {
-	printf("[%d - %d]\n", pos.x, pos.y);
 	if (obj == 'P')
 		mlx_put_image_to_window(mlx.mlx, mlx.mlx_win, sprites[SPRITE0], pos.x, pos.y);
 	else if (obj == '0')
