@@ -6,7 +6,7 @@
 /*   By: psaulnie <psaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 09:27:19 by psaulnie          #+#    #+#             */
-/*   Updated: 2021/12/27 11:48:32 by psaulnie         ###   ########.fr       */
+/*   Updated: 2021/12/27 18:28:01 by psaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,14 @@ typedef struct s_data
 {
 	t_map	map;
 	t_mlx	mlx;
+	int		total_coin;
+	int		current_coin;
+	int		movement;
 }				t_data;
 
-/*	MAIN.C	*/
+/*	ANIMATION.C	*/
+
+int	anim(t_data *data);
 
 /*	INPUT.C	*/
 

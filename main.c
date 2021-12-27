@@ -6,7 +6,7 @@
 /*   By: psaulnie <psaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 09:25:36 by psaulnie          #+#    #+#             */
-/*   Updated: 2021/12/27 11:52:22 by psaulnie         ###   ########.fr       */
+/*   Updated: 2021/12/27 16:30:01 by psaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int	main(int argc, char *argv[])
 	}
 	data.map.map = parsing(argv[1]);
 	data.mlx.mlx = mlx_init();
+	data.current_coin = 0;
+	data.movement = 1;
 	data.map.sprites = get_sprites(data.mlx.mlx);
 	data.mlx.mlx_win = mlx_new_window(data.mlx.mlx, ft_strlen(data.map.map[0]) * 63,
 			get_width(data.map.map) * 63, "so_long");

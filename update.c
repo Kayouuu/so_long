@@ -6,7 +6,7 @@
 /*   By: psaulnie <psaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 14:29:37 by psaulnie          #+#    #+#             */
-/*   Updated: 2021/12/27 12:03:37 by psaulnie         ###   ########.fr       */
+/*   Updated: 2021/12/27 15:53:43 by psaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	update_map(char **old_map, char **map, char **sprites, t_mlx mlx)
 			}
 			pos.x++;
 		}
+		free(old_map[pos.y]);
 		pos.y++;
 	}
 	free(old_map);
