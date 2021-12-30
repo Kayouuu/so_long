@@ -6,7 +6,7 @@
 /*   By: psaulnie <psaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 14:29:37 by psaulnie          #+#    #+#             */
-/*   Updated: 2021/12/27 15:53:43 by psaulnie         ###   ########.fr       */
+/*   Updated: 2021/12/28 12:44:59 by psaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	get_player_pos(t_obj *player, char **map)
 {
-	int     x;
-	int     y;
+	int	x;
+	int	y;
 
 	y = 0;
 	while (map[y])
@@ -39,7 +39,7 @@ void	update_map(char **old_map, char **map, char **sprites, t_mlx mlx)
 {
 	t_pos	pos;
 	t_pos	backup;
-	
+
 	pos.y = 0;
 	while (old_map[pos.y])
 	{

@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   animation.c                                        :+:      :+:    :+:   */
+/*   destroy.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psaulnie <psaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/27 17:55:12 by psaulnie          #+#    #+#             */
-/*   Updated: 2021/12/28 12:30:07 by psaulnie         ###   ########.fr       */
+/*   Created: 2021/12/28 11:28:44 by psaulnie          #+#    #+#             */
+/*   Updated: 2021/12/28 12:48:21 by psaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	anim(t_data *data)
+void	free_tab(char **tab)
 {
-	t_obj		player;
-	static int	i;
+	int	i;
 
 	i = 0;
-	printf("{%d}\n", i);
-	get_player_pos(&player, data->map.map);
-	mlx_put_image_to_window(data->mlx.mlx, data->mlx.mlx_win,
-		data->map.sprites[i], player.pos.x * 63, player.pos.y * 63);
-	i++;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
+}
+
+int	destroy(t_data *data)
+{
+	free_tab(data->map.map);
+	free_tab(data->map.map_backup);
+	mlx_clear_window(data->mlx.mlx, data->mlx.mlx_win);
+	mlx_destroy_window(data->mlx.mlx, data->mlx.mlx_win);
+	exit(1);
 }

@@ -6,7 +6,7 @@
 /*   By: psaulnie <psaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 14:54:50 by psaulnie          #+#    #+#             */
-/*   Updated: 2021/12/21 15:36:27 by psaulnie         ###   ########.fr       */
+/*   Updated: 2021/12/28 12:16:11 by psaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ static int	file_nbr_line(char *map)
 	while (tmp != NULL)
 	{
 		tmp = get_next_line(fd);
+		free(tmp);
 		i++;
 	}
 	close(fd);

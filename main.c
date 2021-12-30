@@ -6,7 +6,7 @@
 /*   By: psaulnie <psaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 09:25:36 by psaulnie          #+#    #+#             */
-/*   Updated: 2021/12/27 16:30:01 by psaulnie         ###   ########.fr       */
+/*   Updated: 2021/12/30 12:03:24 by psaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,33 @@ static int	get_width(char **map)
 	return (i);
 }
 
+static int	get_coin_total(char **map)
+{
+	int	x;
+	int	y;
+	int	total;
+
+	y = 0;
+	total = 0;
+	while (map[y])
+	{
+		x = 0;
+		while (map[y][x])
+		{
+			if (map[y][x] == 'C')
+				total++;
+			x++;
+		}
+		y++;
+	}
+	if (total == 0)
+	{
+		printf("Map error");
+		exit(-1);
+	}
+	return (total);
+}
+
 int	main(int argc, char *argv[])
 {
 	t_data	data;
@@ -32,14 +59,18 @@ int	main(int argc, char *argv[])
 		return (-1);
 	}
 	data.map.map = parsing(argv[1]);
-	data.mlx.mlx = mlx_init();
+	check_map_error(data.map.map);
 	data.current_coin = 0;
+	data.total_coin = get_coin_total(data.map.map);
 	data.movement = 1;
+	data.mlx.mlx = mlx_init();
 	data.map.sprites = get_sprites(data.mlx.mlx);
-	data.mlx.mlx_win = mlx_new_window(data.mlx.mlx, ft_strlen(data.map.map[0]) * 63,
+	data.mlx.mlx_win = mlx_new_window(data.mlx.mlx,
+			ft_strlen(data.map.map[0]) * 63,
 			get_width(data.map.map) * 63, "so_long");
 	draw_map(data.mlx, data.map.sprites, data.map.map);
 	data.map.map_backup = backup_map(data.map.map);
 	mlx_key_hook(data.mlx.mlx_win, input, &data);
+	mlx_hook(data.mlx.mlx_win, 17, 1L << 0, destroy, &data);
 	mlx_loop(data.mlx.mlx);
 }

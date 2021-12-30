@@ -6,7 +6,7 @@
 /*   By: psaulnie <psaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 14:21:00 by psaulnie          #+#    #+#             */
-/*   Updated: 2021/12/26 15:51:46 by psaulnie         ###   ########.fr       */
+/*   Updated: 2021/12/28 12:30:31 by psaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,20 @@
 void	draw(char obj, t_pos pos, char **sprites, t_mlx mlx)
 {
 	if (obj == 'P')
-		mlx_put_image_to_window(mlx.mlx, mlx.mlx_win, sprites[SPRITE0], pos.x, pos.y);
+		mlx_put_image_to_window(mlx.mlx, mlx.mlx_win,
+			sprites[SPRITE0], pos.x, pos.y);
 	else if (obj == '0')
-		mlx_put_image_to_window(mlx.mlx, mlx.mlx_win, sprites[GRASS], pos.x, pos.y);
+		mlx_put_image_to_window(mlx.mlx, mlx.mlx_win,
+			sprites[GRASS], pos.x, pos.y);
 	else if (obj == '1')
-		mlx_put_image_to_window(mlx.mlx, mlx.mlx_win, sprites[TREE], pos.x, pos.y);
+		mlx_put_image_to_window(mlx.mlx, mlx.mlx_win,
+			sprites[TREE], pos.x, pos.y);
 	else if (obj == 'E')
-		mlx_put_image_to_window(mlx.mlx, mlx.mlx_win, sprites[CHEST], pos.x, pos.y);
+		mlx_put_image_to_window(mlx.mlx, mlx.mlx_win,
+			sprites[CHEST], pos.x, pos.y);
 	else if (obj == 'C')
-		mlx_put_image_to_window(mlx.mlx, mlx.mlx_win, sprites[COIN], pos.x, pos.y);
+		mlx_put_image_to_window(mlx.mlx, mlx.mlx_win,
+			sprites[COIN], pos.x, pos.y);
 }
 
 void	draw_map(t_mlx mlx, char **sprites, char **map)
