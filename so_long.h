@@ -6,7 +6,7 @@
 /*   By: psaulnie <psaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 09:27:19 by psaulnie          #+#    #+#             */
-/*   Updated: 2022/01/02 16:22:19 by psaulnie         ###   ########.fr       */
+/*   Updated: 2022/01/02 17:24:21 by psaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,16 @@
 
 # define SPRITE0 0
 # define SPRITE3 3
-# define CHEST 8
-# define GRASS 9
-# define TREE 10
-# define COIN 11
+# define CHEST 6
+# define GRASS 7
+# define TREE 8
+# define COIN 9
 
 # define KEY_UP 119
 # define KEY_DOWN 115
 # define KEY_LEFT 97
 # define KEY_RIGHT 100
+# define KEY_SPACE 32
 
 typedef struct s_map
 {
@@ -62,8 +63,13 @@ typedef struct s_data
 	int		movement;
 }				t_data;
 
+/*	ANIMATION.C	*/
+
+int		anim(int key, t_data *data);
+
 /*	DESTROY.C	*/
 
+int		destroy_mouse(t_data *data);
 int		destroy(int key, t_data *data);
 
 /*	HANDLING.C	*/

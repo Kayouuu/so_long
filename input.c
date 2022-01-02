@@ -6,7 +6,7 @@
 /*   By: psaulnie <psaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 11:00:33 by psaulnie          #+#    #+#             */
-/*   Updated: 2022/01/02 16:16:38 by psaulnie         ###   ########.fr       */
+/*   Updated: 2022/01/02 16:27:19 by psaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	check_exit(t_data data, int key, t_obj	player)
 	update_map(data.map.map_backup, data.map.map,
 		data.map.sprites, data.mlx);
 	data.map.map_backup = backup_map(data.map.map);
-	mlx_key_hook(data.mlx.mlx_win, destroy, &data);
+	mlx_key_hook(data.mlx.mlx_win, anim, &data);
 	mlx_loop(data.mlx.mlx);
 }
 

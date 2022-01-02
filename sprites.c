@@ -6,7 +6,7 @@
 /*   By: psaulnie <psaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 14:21:00 by psaulnie          #+#    #+#             */
-/*   Updated: 2022/01/02 15:51:16 by psaulnie         ###   ########.fr       */
+/*   Updated: 2022/01/02 17:18:15 by psaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	draw(char obj, t_pos pos, char **sprites, t_mlx mlx)
 			sprites[COIN], pos.x, pos.y);
 	else if (obj == 'S')
 		mlx_put_image_to_window(mlx.mlx, mlx.mlx_win,
-			sprites[SPRITE3], pos.x, pos.y);
+			sprites[SPRITE0], pos.x, pos.y);
 }
 
 void	draw_map(t_mlx mlx, char **sprites, char **map)
@@ -79,20 +79,18 @@ char	**get_sprites(void *mlx)
 	int		w;
 	int		h;
 
-	sprites = malloc(sizeof(void *) * (12 + 1));
+	sprites = malloc(sizeof(void *) * (10 + 1));
 	sprites[0] = mlx_xpm_file_to_image(mlx, "sprites/sprite_0.xpm", &w, &h);
 	sprites[1] = mlx_xpm_file_to_image(mlx, "sprites/sprite_1.xpm", &w, &h);
 	sprites[2] = mlx_xpm_file_to_image(mlx, "sprites/sprite_2.xpm", &w, &h);
 	sprites[3] = mlx_xpm_file_to_image(mlx, "sprites/sprite_3.xpm", &w, &h);
 	sprites[4] = mlx_xpm_file_to_image(mlx, "sprites/sprite_4.xpm", &w, &h);
 	sprites[5] = mlx_xpm_file_to_image(mlx, "sprites/sprite_5.xpm", &w, &h);
-	sprites[6] = mlx_xpm_file_to_image(mlx, "sprites/sprite_6.xpm", &w, &h);
-	sprites[7] = mlx_xpm_file_to_image(mlx, "sprites/sprite_7.xpm", &w, &h);
-	sprites[8] = mlx_xpm_file_to_image(mlx, "sprites/chest.xpm", &w, &h);
-	sprites[9] = mlx_xpm_file_to_image(mlx, "sprites/grass.xpm", &w, &h);
-	sprites[10] = mlx_xpm_file_to_image(mlx, "sprites/tree.xpm", &w, &h);
-	sprites[11] = mlx_xpm_file_to_image(mlx, "sprites/coin.xpm", &w, &h);
-	sprites[12] = NULL;
+	sprites[6] = mlx_xpm_file_to_image(mlx, "sprites/chest.xpm", &w, &h);
+	sprites[7] = mlx_xpm_file_to_image(mlx, "sprites/grass.xpm", &w, &h);
+	sprites[8] = mlx_xpm_file_to_image(mlx, "sprites/tree.xpm", &w, &h);
+	sprites[9] = mlx_xpm_file_to_image(mlx, "sprites/coin.xpm", &w, &h);
+	sprites[10] = NULL;
 	check(sprites);
 	return (sprites);
 }

@@ -6,7 +6,7 @@
 /*   By: psaulnie <psaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 09:25:36 by psaulnie          #+#    #+#             */
-/*   Updated: 2022/01/02 16:08:15 by psaulnie         ###   ########.fr       */
+/*   Updated: 2022/01/02 17:28:29 by psaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,6 @@ int	main(int argc, char *argv[])
 	draw_map(data.mlx, data.map.sprites, data.map.map);
 	data.map.map_backup = backup_map(data.map.map);
 	mlx_key_hook(data.mlx.mlx_win, input, &data);
-	mlx_hook(data.mlx.mlx_win, 17, 1L << 0, destroy, &data);
+	mlx_hook(data.mlx.mlx_win, 17, 1L << 0, destroy_mouse, &data);
 	mlx_loop(data.mlx.mlx);
 }
