@@ -6,7 +6,7 @@
 /*   By: psaulnie <psaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 09:27:19 by psaulnie          #+#    #+#             */
-/*   Updated: 2021/12/30 11:22:13 by psaulnie         ###   ########.fr       */
+/*   Updated: 2022/01/02 16:22:19 by psaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <fcntl.h>
 
 # define SPRITE0 0
+# define SPRITE3 3
 # define CHEST 8
 # define GRASS 9
 # define TREE 10
@@ -61,13 +62,9 @@ typedef struct s_data
 	int		movement;
 }				t_data;
 
-/*	ANIMATION.C	*/
-
-int		anim(t_data *data);
-
 /*	DESTROY.C	*/
 
-int		destroy(t_data *data);
+int		destroy(int key, t_data *data);
 
 /*	HANDLING.C	*/
 
@@ -75,6 +72,7 @@ void	check_map_error(char **map);
 
 /*	INPUT.C	*/
 
+void	check_exit(t_data data, int key, t_obj	player);
 int		input(int key, t_data *data);
 
 /*	PARSING.C	*/

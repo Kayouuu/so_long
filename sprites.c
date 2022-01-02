@@ -6,7 +6,7 @@
 /*   By: psaulnie <psaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 14:21:00 by psaulnie          #+#    #+#             */
-/*   Updated: 2021/12/28 12:30:31 by psaulnie         ###   ########.fr       */
+/*   Updated: 2022/01/02 15:51:16 by psaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ void	draw(char obj, t_pos pos, char **sprites, t_mlx mlx)
 	else if (obj == 'C')
 		mlx_put_image_to_window(mlx.mlx, mlx.mlx_win,
 			sprites[COIN], pos.x, pos.y);
+	else if (obj == 'S')
+		mlx_put_image_to_window(mlx.mlx, mlx.mlx_win,
+			sprites[SPRITE3], pos.x, pos.y);
 }
 
 void	draw_map(t_mlx mlx, char **sprites, char **map)

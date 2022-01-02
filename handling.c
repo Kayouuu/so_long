@@ -6,7 +6,7 @@
 /*   By: psaulnie <psaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 11:21:10 by psaulnie          #+#    #+#             */
-/*   Updated: 2021/12/30 12:00:20 by psaulnie         ###   ########.fr       */
+/*   Updated: 2022/01/02 16:22:33 by psaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ static void	check_walls(char **map, int last_line)
 {
 	int	x;
 	int	y;
-	
+
 	x = 0;
-	while(map[0][x])
+	while (map[0][x])
 	{
 		if (map[0][x] != '1')
 		{
