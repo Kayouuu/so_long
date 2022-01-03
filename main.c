@@ -6,7 +6,7 @@
 /*   By: psaulnie <psaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 09:25:36 by psaulnie          #+#    #+#             */
-/*   Updated: 2022/01/02 17:28:29 by psaulnie         ###   ########.fr       */
+/*   Updated: 2022/01/03 15:50:16 by psaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,28 @@ static int	get_width(char **map)
 	while (map[i])
 		i++;
 	return (i);
+}
+
+static int	get_enemy_total(char **map)
+{
+	int	x;
+	int	y;
+	int	total;
+
+	y = 0;
+	total = 0;
+	while (map[y])
+	{
+		x = 0;
+		while (map[y][x])
+		{
+			if (map[y][x] == 'A')
+				total++;
+			x++;
+		}
+		y++;
+	}
+	return (total);
 }
 
 static int	get_coin_total(char **map)
@@ -62,6 +84,8 @@ int	main(int argc, char *argv[])
 	check_map_error(data.map.map);
 	data.current_coin = 0;
 	data.total_coin = get_coin_total(data.map.map);
+	data.enemy_nbr = get_enemy_total(data.map.map);
+	data.enemy_pos = NULL;
 	data.movement = 1;
 	data.mlx.mlx = mlx_init();
 	data.map.sprites = get_sprites(data.mlx.mlx);
@@ -72,5 +96,6 @@ int	main(int argc, char *argv[])
 	data.map.map_backup = backup_map(data.map.map);
 	mlx_key_hook(data.mlx.mlx_win, input, &data);
 	mlx_hook(data.mlx.mlx_win, 17, 1L << 0, destroy_mouse, &data);
+	mlx_loop_hook(data.mlx.mlx_win, enemy, &data);
 	mlx_loop(data.mlx.mlx);
 }

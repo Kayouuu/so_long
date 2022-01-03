@@ -6,7 +6,7 @@
 /*   By: psaulnie <psaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 14:21:00 by psaulnie          #+#    #+#             */
-/*   Updated: 2022/01/02 17:18:15 by psaulnie         ###   ########.fr       */
+/*   Updated: 2022/01/03 14:58:02 by psaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ void	draw(char obj, t_pos pos, char **sprites, t_mlx mlx)
 	else if (obj == 'C')
 		mlx_put_image_to_window(mlx.mlx, mlx.mlx_win,
 			sprites[COIN], pos.x, pos.y);
+	else if (obj == 'A')
+		mlx_put_image_to_window(mlx.mlx, mlx.mlx_win,
+			sprites[ENEMY], pos.x, pos.y);
 	else if (obj == 'S')
 		mlx_put_image_to_window(mlx.mlx, mlx.mlx_win,
 			sprites[SPRITE0], pos.x, pos.y);
@@ -79,7 +82,7 @@ char	**get_sprites(void *mlx)
 	int		w;
 	int		h;
 
-	sprites = malloc(sizeof(void *) * (10 + 1));
+	sprites = malloc(sizeof(void *) * (11 + 1));
 	sprites[0] = mlx_xpm_file_to_image(mlx, "sprites/sprite_0.xpm", &w, &h);
 	sprites[1] = mlx_xpm_file_to_image(mlx, "sprites/sprite_1.xpm", &w, &h);
 	sprites[2] = mlx_xpm_file_to_image(mlx, "sprites/sprite_2.xpm", &w, &h);
@@ -90,7 +93,8 @@ char	**get_sprites(void *mlx)
 	sprites[7] = mlx_xpm_file_to_image(mlx, "sprites/grass.xpm", &w, &h);
 	sprites[8] = mlx_xpm_file_to_image(mlx, "sprites/tree.xpm", &w, &h);
 	sprites[9] = mlx_xpm_file_to_image(mlx, "sprites/coin.xpm", &w, &h);
-	sprites[10] = NULL;
+	sprites[10] = mlx_xpm_file_to_image(mlx, "sprites/enemy.xpm", &w, &h);
+	sprites[11] = NULL;
 	check(sprites);
 	return (sprites);
 }

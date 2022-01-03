@@ -6,7 +6,7 @@
 /*   By: psaulnie <psaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 09:27:19 by psaulnie          #+#    #+#             */
-/*   Updated: 2022/01/02 17:24:21 by psaulnie         ###   ########.fr       */
+/*   Updated: 2022/01/03 15:37:37 by psaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@
 # include <fcntl.h>
 
 # define SPRITE0 0
-# define SPRITE3 3
 # define CHEST 6
 # define GRASS 7
 # define TREE 8
 # define COIN 9
+# define ENEMY 10
 
 # define KEY_UP 119
 # define KEY_DOWN 115
@@ -58,9 +58,11 @@ typedef struct s_data
 {
 	t_map	map;
 	t_mlx	mlx;
+	t_pos	*enemy_pos;
 	int		total_coin;
 	int		current_coin;
 	int		movement;
+	int		enemy_nbr;
 }				t_data;
 
 /*	ANIMATION.C	*/
@@ -71,6 +73,10 @@ int		anim(int key, t_data *data);
 
 int		destroy_mouse(t_data *data);
 int		destroy(int key, t_data *data);
+
+/*	ENEMY.C	*/
+
+int		enemy(t_data *data);
 
 /*	HANDLING.C	*/
 
