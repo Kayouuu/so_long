@@ -6,7 +6,7 @@
 /*   By: psaulnie <psaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 14:52:44 by psaulnie          #+#    #+#             */
-/*   Updated: 2022/01/03 15:57:24 by psaulnie         ###   ########.fr       */
+/*   Updated: 2022/01/05 10:19:18 by psaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static t_pos	*get_enemy_pos(t_data data)
 	if (data.enemy_pos != NULL)
 		free(data.enemy_pos);
 	enemy_pos = malloc(sizeof(t_pos) * (data.enemy_nbr + 1));
+	if (!enemy_pos)
+		destroy(0, data);
 	pos.y = 0;
 	counter = 0;
 	while (data.map.map[pos.y])

@@ -6,7 +6,7 @@
 /*   By: psaulnie <psaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 11:00:33 by psaulnie          #+#    #+#             */
-/*   Updated: 2022/01/03 15:52:56 by psaulnie         ###   ########.fr       */
+/*   Updated: 2022/01/05 10:15:10 by psaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	check_exit(t_data data, int key, t_obj	player)
 
 static int	check_input(t_data data, int key, t_obj	player)
 {
-	if (key == 65307)
+	if (key == 53)
 		destroy(0, &data);
 	if (key == KEY_UP
 		&& data.map.map[player.pos.y - 1][player.pos.x] != '1'
@@ -63,7 +63,26 @@ static int	check_input(t_data data, int key, t_obj	player)
 		return (KEY_DOWN);
 	else
 		check_exit(data, key, player);
-	return (0);
+	return (8);
+}
+
+static int	movement(int key, t_data *data, t_obj *player)
+{
+	int	as_moved;
+
+	as_moved = 1;
+	get_player_pos(&*player, data->map.map);
+	if (check_input(*data, key, *player) == KEY_UP)
+		data->map.map[player->pos.y - 1][player->pos.x] = 'P';
+	else if (check_input(*data, key, *player) == KEY_LEFT)
+		data->map.map[player->pos.y][player->pos.x - 1] = 'P';
+	else if (check_input(*data, key, *player) == KEY_RIGHT)
+		data->map.map[player->pos.y][player->pos.x + 1] = 'P';
+	else if (check_input(*data, key, *player) == KEY_DOWN)
+		data->map.map[player->pos.y + 1][player->pos.x] = 'P';
+	else
+		as_moved = 0;
+	return (as_moved);
 }
 
 int	input(int key, t_data *data)
@@ -71,19 +90,9 @@ int	input(int key, t_data *data)
 	t_obj	player;
 	int		as_moved;
 
-	as_moved = 1;
-	get_player_pos(&player, data->map.map);
-	if (check_input(*data, key, player) == KEY_UP)
-		data->map.map[player.pos.y - 1][player.pos.x] = 'P';
-	else if (check_input(*data, key, player) == KEY_LEFT)
-		data->map.map[player.pos.y][player.pos.x - 1] = 'P';
-	else if (check_input(*data, key, player) == KEY_RIGHT)
-		data->map.map[player.pos.y][player.pos.x + 1] = 'P';
-	else if (check_input(*data, key, player) == KEY_DOWN)
-		data->map.map[player.pos.y + 1][player.pos.x] = 'P';
-	else
-		as_moved = 0;
-	if (check_input(*data, key, player) != 0)
+	player.pos.x = 0;
+	as_moved = movement(key, &(*data), &player);
+	if (check_input(*data, key, player) != 8)
 		data->map.map[player.pos.y][player.pos.x] = '0';
 	get_player_pos(&player, data->map.map);
 	if (data->map.map_backup[player.pos.y][player.pos.x] == 'C')

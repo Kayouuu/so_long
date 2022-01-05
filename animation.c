@@ -6,7 +6,7 @@
 /*   By: psaulnie <psaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 16:27:29 by psaulnie          #+#    #+#             */
-/*   Updated: 2022/01/02 17:29:15 by psaulnie         ###   ########.fr       */
+/*   Updated: 2022/01/05 10:16:48 by psaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,9 @@ int	anim(int key, t_data *data)
 	static int	i = 1;
 	t_pos		exit_pos;
 
-	if (key != 65307)
+	if (i == 1)
+		printf("Congrats !\n");
+	if (key != 53)
 	{
 		get_exit_pos(&exit_pos, data->map.map);
 		if (i == 6)

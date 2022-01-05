@@ -6,14 +6,14 @@
 /*   By: psaulnie <psaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 09:27:19 by psaulnie          #+#    #+#             */
-/*   Updated: 2022/01/03 15:37:37 by psaulnie         ###   ########.fr       */
+/*   Updated: 2022/01/05 09:36:30 by psaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include <mlx.h>
+# include "minilibx/mlx.h"
 # include "libft/libft.h"
 
 # include <stdlib.h>
@@ -27,11 +27,11 @@
 # define COIN 9
 # define ENEMY 10
 
-# define KEY_UP 119
-# define KEY_DOWN 115
-# define KEY_LEFT 97
-# define KEY_RIGHT 100
-# define KEY_SPACE 32
+# define KEY_UP 13
+# define KEY_DOWN 1
+# define KEY_LEFT 0
+# define KEY_RIGHT 2
+# define KEY_SPACE 49
 
 typedef struct s_map
 {
