@@ -6,7 +6,7 @@
 /*   By: psaulnie <psaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 14:52:44 by psaulnie          #+#    #+#             */
-/*   Updated: 2022/01/05 10:19:18 by psaulnie         ###   ########.fr       */
+/*   Updated: 2022/01/06 09:54:48 by psaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static t_pos	*get_enemy_pos(t_data data)
 		free(data.enemy_pos);
 	enemy_pos = malloc(sizeof(t_pos) * (data.enemy_nbr + 1));
 	if (!enemy_pos)
-		destroy(0, data);
+		destroy(0, &data);
 	pos.y = 0;
 	counter = 0;
 	while (data.map.map[pos.y])
@@ -55,26 +55,30 @@ static int	check(char c)
 
 void	enemy_movement(t_data *data, int i)
 {
-	int	as_moved;
+	t_pos	player;
+	int		as_moved;
+	int		y;
+	int		x;
 
+	get_player_pos(&player, data->map.map_backup);
+	y = data->enemy_pos[i].y;
+	x = data->enemy_pos[i].x;
 	as_moved = 1;
-	if (check(data->map.map[data->enemy_pos[i].y - 1][data->enemy_pos[i].x]))
-		data->map.map[data->enemy_pos[i].y - 1][data->enemy_pos[i].x] = 'A';
-	else if (check(data->map.map[data->enemy_pos[i].y + 1][data->enemy_pos[i].x]))
-		data->map.map[data->enemy_pos[i].y + 1][data->enemy_pos[i].x] = 'A';
-	else if (check(data->map.map[data->enemy_pos[i].y][data->enemy_pos[i].x - 1]))
-		data->map.map[data->enemy_pos[i].y][data->enemy_pos[i].x - 1] = 'A';
-	else if (check(data->map.map[data->enemy_pos[i].y][data->enemy_pos[i].x + 1]))
-		data->map.map[data->enemy_pos[i].y][data->enemy_pos[i].x + 1] = 'A';
+	if (check(data->map.map[y - 1][x]))
+		data->map.map[y - 1][x] = 'A';
+	else if (check(data->map.map[y + 1][x]))
+		data->map.map[y + 1][x] = 'A';
+	else if (check(data->map.map[y][x - 1]))
+		data->map.map[y][x - 1] = 'A';
+	else if (check(data->map.map[y][x + 1]))
+		data->map.map[y][x + 1] = 'A';
 	else
 		as_moved = 0;
 	if (as_moved)
-	{
-		data->map.map[data->enemy_pos[i].y][data->enemy_pos[i].x] = '0';
-	}
+		data->map.map[y][x] = '0';
 	update_map(data->map.map_backup, data->map.map,
 		data->map.sprites, data->mlx);
-	data->map.map_backup = backup_map(data->map.map);
+	data->map.map_backup = backup_map(&*data);
 }
 
 int	enemy(t_data *data)

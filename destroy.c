@@ -6,7 +6,7 @@
 /*   By: psaulnie <psaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 11:28:44 by psaulnie          #+#    #+#             */
-/*   Updated: 2022/01/05 10:18:25 by psaulnie         ###   ########.fr       */
+/*   Updated: 2022/01/05 14:10:08 by psaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,6 @@ int	destroy(int key, t_data *data)
 		mlx_clear_window(data->mlx.mlx, data->mlx.mlx_win);
 		mlx_destroy_window(data->mlx.mlx, data->mlx.mlx_win);
 	}
-	free_tab(data->map.sprites);
+	free(data->map.sprites);
 	exit(1);
 }

@@ -6,7 +6,7 @@
 /*   By: psaulnie <psaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 14:54:50 by psaulnie          #+#    #+#             */
-/*   Updated: 2022/01/05 10:19:29 by psaulnie         ###   ########.fr       */
+/*   Updated: 2022/01/06 09:50:50 by psaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ static char	**trim_nl(char **parsed_map, int i)
 
 	counter = 0;
 	final_output = malloc(sizeof(char *) * (i + 1));
+	if (!final_output)
+	{
+		free_tab(parsed_map);
+		exit (-1);
+	}
 	while (counter < i)
 	{
 		final_output[counter] = ft_strtrim(parsed_map[counter], "\n");
@@ -60,6 +65,11 @@ char	**parsing(char *map)
 	i = file_nbr_line(map);
 	fd = open(map, O_RDONLY);
 	parsed_map = malloc(sizeof(char *) * (i + 1));
+	if (!parsed_map)
+	{
+		close(fd);
+		exit(-1);
+	}
 	counter = 0;
 	while (counter < i)
 		parsed_map[counter++] = get_next_line(fd);

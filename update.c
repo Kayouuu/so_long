@@ -6,13 +6,13 @@
 /*   By: psaulnie <psaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 14:29:37 by psaulnie          #+#    #+#             */
-/*   Updated: 2021/12/28 12:44:59 by psaulnie         ###   ########.fr       */
+/*   Updated: 2022/01/06 09:48:55 by psaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	get_player_pos(t_obj *player, char **map)
+void	get_player_pos(t_pos *player, char **map)
 {
 	int	x;
 	int	y;
@@ -31,11 +31,11 @@ void	get_player_pos(t_obj *player, char **map)
 			break ;
 		y++;
 	}
-	player->pos.x = x;
-	player->pos.y = y;
+	player->x = x;
+	player->y = y;
 }
 
-void	update_map(char **old_map, char **map, char **sprites, t_mlx mlx)
+void	update_map(char **old_map, char **map, void **sprites, t_mlx mlx)
 {
 	t_pos	pos;
 	t_pos	backup;
@@ -64,7 +64,7 @@ void	update_map(char **old_map, char **map, char **sprites, t_mlx mlx)
 	free(old_map);
 }
 
-char	**backup_map(char **map)
+char	**backup_map(t_data *data)
 {
 	char	**backup;
 	int		len;
@@ -72,12 +72,14 @@ char	**backup_map(char **map)
 
 	len = 0;
 	i = 0;
-	while (map[len])
+	while (data->map.map[len])
 		len++;
 	backup = malloc(sizeof(char *) * (len + 1));
+	if (!backup)
+		destroy(0, &*data);
 	while (i < len)
 	{
-		backup[i] = ft_strdup(map[i]);
+		backup[i] = ft_strdup(data->map.map[i]);
 		i++;
 	}
 	backup[i] = NULL;
