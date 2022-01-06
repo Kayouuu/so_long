@@ -6,11 +6,39 @@
 /*   By: psaulnie <psaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 14:54:50 by psaulnie          #+#    #+#             */
-/*   Updated: 2022/01/06 09:50:50 by psaulnie         ###   ########.fr       */
+/*   Updated: 2022/01/06 11:50:48 by psaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+static void	end_program(char *str)
+{
+	printf("%s\n", str);
+	exit(-1);
+}
+
+static void	check_map_format(char *map)
+{
+	int	is_valid;
+	int	i;
+
+	is_valid = 0;
+	i = 0;
+	while (map[i])
+	{
+		if (ft_strncmp(&map[i], ".ber", 4) == 0)
+		{
+			is_valid = 1;
+			break ;
+		}
+		i++;
+	}
+	if (is_valid)
+		return ;
+	printf("Wrong file format\n");
+	exit(-1);
+}
 
 static char	**trim_nl(char **parsed_map, int i)
 {
@@ -21,14 +49,20 @@ static char	**trim_nl(char **parsed_map, int i)
 	final_output = malloc(sizeof(char *) * (i + 1));
 	if (!final_output)
 	{
+		printf("Malloc error");
 		free_tab(parsed_map);
 		exit (-1);
 	}
 	while (counter < i)
 	{
 		final_output[counter] = ft_strtrim(parsed_map[counter], "\n");
-		free(parsed_map[counter]);
-		counter++;
+		if (!final_output)
+		{
+			printf("Malloc error");
+			free_tab(final_output);
+			exit (-1);
+		}
+		free(parsed_map[counter++]);
 	}
 	final_output[counter] = NULL;
 	free(parsed_map);
@@ -62,13 +96,16 @@ char	**parsing(char *map)
 	int		i;
 	int		counter;
 
+	check_map_format(map);
 	i = file_nbr_line(map);
 	fd = open(map, O_RDONLY);
+	if (fd == -1)
+		end_program("File not found");
 	parsed_map = malloc(sizeof(char *) * (i + 1));
 	if (!parsed_map)
 	{
 		close(fd);
-		exit(-1);
+		end_program("Malloc error");
 	}
 	counter = 0;
 	while (counter < i)

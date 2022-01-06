@@ -6,7 +6,7 @@
 /*   By: psaulnie <psaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 11:21:10 by psaulnie          #+#    #+#             */
-/*   Updated: 2022/01/06 10:13:35 by psaulnie         ###   ########.fr       */
+/*   Updated: 2022/01/06 11:35:09 by psaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	check_map_error(t_data *data)
 	pos.y = 0;
 	while (data->map.map[0][x_len])
 		x_len++;
-	while (data->map.map[pos.y])
+	while (data->map.map[++pos.y])
 	{
 		pos.x = 0;
 		while (data->map.map[pos.y][pos.x])
@@ -58,12 +58,12 @@ void	check_map_error(t_data *data)
 				player_nbr++;
 		if (pos.x != x_len)
 			break ;
-		pos.y++;
 	}
+	if (player_nbr != 1)
+		printf("Map error : wrong number of player");
+	else if (pos.x != x_len)
+		printf("Map error : non equal length");
 	if (player_nbr != 1 || pos.x != x_len)
-	{
-		printf("Map error");
 		destroy(0, &*data);
-	}
 	check_walls(&*data, pos.y - 1);
 }
