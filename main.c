@@ -6,7 +6,7 @@
 /*   By: psaulnie <psaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 09:25:36 by psaulnie          #+#    #+#             */
-/*   Updated: 2022/01/06 11:23:22 by psaulnie         ###   ########.fr       */
+/*   Updated: 2022/01/07 18:22:00 by psaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,8 @@ static t_data	init(char *argv[])
 	get_coin_total(&data);
 	get_enemy_total(&data);
 	data.current_coin = 0;
-	data.enemy_pos = NULL;
+	data.enemy = 0;
+	data.dead = 0;
 	data.movement = 1;
 	data.mlx.mlx = mlx_init();
 	data.map.sprites = get_sprites(&data);
@@ -105,6 +106,5 @@ int	main(int argc, char *argv[])
 	data = init(argv);
 	mlx_key_hook(data.mlx.mlx_win, input, &data);
 	mlx_hook(data.mlx.mlx_win, 17, 1L << 0, destroy_mouse, &data);
-	mlx_loop_hook(data.mlx.mlx_win, enemy, &data);
 	mlx_loop(data.mlx.mlx);
 }

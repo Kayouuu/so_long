@@ -6,7 +6,7 @@
 /*   By: psaulnie <psaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 11:28:44 by psaulnie          #+#    #+#             */
-/*   Updated: 2022/01/05 14:10:08 by psaulnie         ###   ########.fr       */
+/*   Updated: 2022/01/07 18:39:01 by psaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	destroy_mouse(t_data *data)
 
 int	destroy(int key, t_data *data)
 {
-	if (!key)
+	if (key != KEY_ESC)
 		exit (1);
 	if (data->map.map)
 		free_tab(data->map.map);

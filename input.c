@@ -6,7 +6,7 @@
 /*   By: psaulnie <psaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 11:00:33 by psaulnie          #+#    #+#             */
-/*   Updated: 2022/01/06 09:53:58 by psaulnie         ###   ########.fr       */
+/*   Updated: 2022/01/07 18:36:49 by psaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,9 @@ int	input(int key, t_data *data)
 	if (!as_moved)
 		return (0);
 	printf("%d\n", data->movement++);
+	update_map(data->map.map_backup, data->map.map,
+		data->map.sprites, data->mlx);
+	data->map.map_backup = backup_map(&*data);
 	enemy(data);
 	update_map(data->map.map_backup, data->map.map,
 		data->map.sprites, data->mlx);

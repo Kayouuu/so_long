@@ -6,7 +6,7 @@
 /*   By: psaulnie <psaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 09:27:19 by psaulnie          #+#    #+#             */
-/*   Updated: 2022/01/06 10:25:05 by psaulnie         ###   ########.fr       */
+/*   Updated: 2022/01/07 18:45:53 by psaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define TREE 8
 # define COIN 9
 # define ENEMY 10
+# define ENEMY1 11
 
 # define KEY_UP 13
 # define KEY_DOWN 1
@@ -55,6 +56,8 @@ typedef struct s_data
 	t_map	map;
 	t_mlx	mlx;
 	t_pos	*enemy_pos;
+	int		dead;
+	int		enemy;
 	int		total_coin;
 	int		current_coin;
 	int		movement;

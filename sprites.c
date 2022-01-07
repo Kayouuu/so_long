@@ -6,7 +6,7 @@
 /*   By: psaulnie <psaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 14:21:00 by psaulnie          #+#    #+#             */
-/*   Updated: 2022/01/06 10:51:29 by psaulnie         ###   ########.fr       */
+/*   Updated: 2022/01/07 18:45:38 by psaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ void	draw(char obj, t_pos pos, void **sprites, t_mlx mlx)
 	else if (obj == 'A')
 		mlx_put_image_to_window(mlx.mlx, mlx.mlx_win,
 			sprites[ENEMY], pos.x, pos.y);
+	else if (obj == 'B')
+		mlx_put_image_to_window(mlx.mlx, mlx.mlx_win,
+			sprites[ENEMY1], pos.x, pos.y);
 	else if (obj == 'S')
 		mlx_put_image_to_window(mlx.mlx, mlx.mlx_win,
 			sprites[SPRITE0], pos.x, pos.y);
@@ -80,27 +83,27 @@ void	**get_sprites(t_data *data)
 {
 	void	**s;
 	int		w;
-	int		h;
 	int		i;
 
-	s = malloc(sizeof(void *) * (11 + 1));
+	s = malloc(sizeof(void *) * (12 + 1));
 	if (!s)
 		destroy(0, &*data);
 	i = 0;
 	while (i++ < 11)
 		s[i] = NULL;
-	s[0] = mlx_xpm_file_to_image(data->mlx.mlx, "sprites/p0.xpm", &w, &h);
-	s[1] = mlx_xpm_file_to_image(data->mlx.mlx, "sprites/p1.xpm", &w, &h);
-	s[2] = mlx_xpm_file_to_image(data->mlx.mlx, "sprites/p2.xpm", &w, &h);
-	s[3] = mlx_xpm_file_to_image(data->mlx.mlx, "sprites/p3.xpm", &w, &h);
-	s[4] = mlx_xpm_file_to_image(data->mlx.mlx, "sprites/p4.xpm", &w, &h);
-	s[5] = mlx_xpm_file_to_image(data->mlx.mlx, "sprites/p5.xpm", &w, &h);
-	s[6] = mlx_xpm_file_to_image(data->mlx.mlx, "sprites/chest.xpm", &w, &h);
-	s[7] = mlx_xpm_file_to_image(data->mlx.mlx, "sprites/grass.xpm", &w, &h);
-	s[8] = mlx_xpm_file_to_image(data->mlx.mlx, "sprites/tree.xpm", &w, &h);
-	s[9] = mlx_xpm_file_to_image(data->mlx.mlx, "sprites/coin.xpm", &w, &h);
-	s[10] = mlx_xpm_file_to_image(data->mlx.mlx, "sprites/enemy.xpm", &w, &h);
-	s[11] = NULL;
+	s[0] = mlx_xpm_file_to_image(data->mlx.mlx, "sprites/p0.xpm", &w, &w);
+	s[1] = mlx_xpm_file_to_image(data->mlx.mlx, "sprites/p1.xpm", &w, &w);
+	s[2] = mlx_xpm_file_to_image(data->mlx.mlx, "sprites/p2.xpm", &w, &w);
+	s[3] = mlx_xpm_file_to_image(data->mlx.mlx, "sprites/p3.xpm", &w, &w);
+	s[4] = mlx_xpm_file_to_image(data->mlx.mlx, "sprites/p4.xpm", &w, &w);
+	s[5] = mlx_xpm_file_to_image(data->mlx.mlx, "sprites/p5.xpm", &w, &w);
+	s[6] = mlx_xpm_file_to_image(data->mlx.mlx, "sprites/chest.xpm", &w, &w);
+	s[7] = mlx_xpm_file_to_image(data->mlx.mlx, "sprites/grass.xpm", &w, &w);
+	s[8] = mlx_xpm_file_to_image(data->mlx.mlx, "sprites/tree.xpm", &w, &w);
+	s[9] = mlx_xpm_file_to_image(data->mlx.mlx, "sprites/coin.xpm", &w, &w);
+	s[10] = mlx_xpm_file_to_image(data->mlx.mlx, "sprites/enemy.xpm", &w, &w);
+	s[11] = mlx_xpm_file_to_image(data->mlx.mlx, "sprites/enemy1.xpm", &w, &w);
+	s[12] = NULL;
 	check(s);
 	return (s);
 }
