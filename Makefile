@@ -6,7 +6,7 @@
 #    By: psaulnie <psaulnie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/06 13:55:52 by psaulnie          #+#    #+#              #
-#    Updated: 2022/01/08 15:56:05 by psaulnie         ###   ########.fr        #
+#    Updated: 2022/01/08 16:03:01 by psaulnie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,10 +24,11 @@ NAME = so_long
 
 ${NAME}: all
 
-all: libft
+all:
 		make -C ${LIBFT}
 		make -C ${MLX}
-		${CC} ${CFLAGS} -o so_long ${SRCS} ./libs/libft/libft.a ./libs/minilibx/libmlx.dylib
+		mv libs/minilibx/libmlx.dylib libmlx.dylib
+		${CC} ${CFLAGS} -o so_long ${SRCS} ./libs/libft/libft.a libmlx.dylib
 
 clean:
 		rm -f ${OBJS}
@@ -46,7 +47,8 @@ re: fclean all
 bonus:
 		make -C ${LIBFT}
 		make -C ${MLX}
-		${CC} ${CFLAGS} -o so_long ${BONUS_SRCS} ./libs/libft/libft.a ./libs/minilibx/libmlx.dylib
+		mv libs/minilibx/libmlx.dylib libmlx.dylib
+		${CC} ${CFLAGS} -o so_long ${BONUS_SRCS} ./libs/libft/libft.a libmlx.dylib
 	
 
 .PHONY:	all clean fclean re bonus
