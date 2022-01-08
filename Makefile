@@ -6,7 +6,7 @@
 #    By: psaulnie <psaulnie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/06 13:55:52 by psaulnie          #+#    #+#              #
-#    Updated: 2022/01/08 16:03:01 by psaulnie         ###   ########.fr        #
+#    Updated: 2022/01/08 17:00:23 by psaulnie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,15 +19,12 @@ srcs_bonus/update_bonus.c
 LIBFT = libs/libft/
 MLX = libs/minilibx/
 CFLAGS = -Wall -Wextra -Werror
-CC = gcc
+CC = cc
 NAME = so_long
 
 ${NAME}: all
 
-all:
-		make -C ${LIBFT}
-		make -C ${MLX}
-		mv libs/minilibx/libmlx.dylib libmlx.dylib
+all: minilibx libft inc/so_long.h Makefile
 		${CC} ${CFLAGS} -o so_long ${SRCS} ./libs/libft/libft.a libmlx.dylib
 
 clean:
@@ -44,11 +41,15 @@ fclean: clean
 
 re: fclean all
 
-bonus:
+libft:
 		make -C ${LIBFT}
+
+minilibx:
 		make -C ${MLX}
 		mv libs/minilibx/libmlx.dylib libmlx.dylib
+
+bonus: minilibx libft inc/so_long_bonus.h Makefile
 		${CC} ${CFLAGS} -o so_long ${BONUS_SRCS} ./libs/libft/libft.a libmlx.dylib
 	
 
-.PHONY:	all clean fclean re bonus
+.PHONY:	all clean fclean re libft minilibx bonus
