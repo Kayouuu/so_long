@@ -75,7 +75,7 @@ The format used for the map is .ber.
 1111111111111111111111111111111111
 ```
 
-# Valid map
+# Map restriction
 
 - The map must be surrounded by walls
 - There should be at least one collectible and one exit
