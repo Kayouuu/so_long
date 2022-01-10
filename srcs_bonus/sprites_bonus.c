@@ -6,7 +6,7 @@
 /*   By: psaulnie <psaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 14:21:00 by psaulnie          #+#    #+#             */
-/*   Updated: 2022/01/08 15:26:54 by psaulnie         ###   ########.fr       */
+/*   Updated: 2022/01/10 09:48:41 by psaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	draw_map(t_mlx mlx, void **sprites, char **map)
 	}
 }
 
-static void	check(void **sprites)
+static void	check(void **sprites, t_data *data)
 {
 	int	i;
 
@@ -73,6 +73,12 @@ static void	check(void **sprites)
 		if (sprites[i] == NULL)
 		{
 			printf("Error at sprites loading");
+			i = 0;
+			while (sprites[i] != NULL)
+			{
+				mlx_destroy_image(data->mlx.mlx, sprites[i]);
+				i++;
+			}
 			exit (-1);
 		}
 		i++;
@@ -104,6 +110,6 @@ void	**get_sprites(t_data *data)
 	s[10] = mlx_xpm_file_to_image(data->mlx.mlx, "sprites/enemy.xpm", &w, &w);
 	s[11] = mlx_xpm_file_to_image(data->mlx.mlx, "sprites/enemy1.xpm", &w, &w);
 	s[12] = NULL;
-	check(s);
+	check(s, &*data);
 	return (s);
 }
