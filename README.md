@@ -12,11 +12,11 @@ Classic gameplay
 
 ![Gif of the gameplay](./img/gameplay2.gif)
 
-Add some ennemies
+With some enemies
 
 ![Gif of the gameplay](./img/gameplay3.gif)
 
-And animations
+And animation
 
 # Compilation & execution
 
