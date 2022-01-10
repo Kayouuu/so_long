@@ -28,14 +28,14 @@ The format used for the map is .ber.
 
 # Map construction
 
-| Component           | Character     |
-| ------------------- | ------------- |
-| Wall                | 1             |
-| Grass / Void        | 0             |
-| Collectible         | C             |
-| Player              | P             |
-| Exit                | E             |
-| Ennemy (bonus only) | A             |
+| Component                | Character     |
+| ------------------------ | ------------- |
+| Wall                     | 1             |
+| Grass / Void             | 0             |
+| Collectible              | C             |
+| Player starting position | P             |
+| Exit                     | E             |
+| Ennemy (bonus only)      | A             |
 
 # Map example
 
@@ -77,6 +77,7 @@ The format used for the map is .ber.
 
 # Valid map
 
-- [o] The map must be surrounded by walls
-- [o] There should be at least one collectible, one player's starting position and one exit
-- [o] Each line must be the same length (the map must be rectangular)
+- The map must be surrounded by walls
+- There should be at least one collectible and one exit
+- Only pne starting position allowed
+- Each line must be the same length (the map must be rectangular)
