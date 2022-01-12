@@ -25,7 +25,7 @@ CC = gcc
 NAME = libft.a
 
 %.o:	%.c libft.h Makefile
-		${CC} ${CFLAGS} -c $< -o $@ -I libs/libft
+		${CC} ${CFLAGS} -c $< -o $@
 
 ${NAME}:	${OBJS}
 			ar -rcs ${NAME} ${OBJS}
