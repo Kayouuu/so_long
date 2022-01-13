@@ -6,7 +6,7 @@
 /*   By: psaulnie <psaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 09:25:36 by psaulnie          #+#    #+#             */
-/*   Updated: 2022/01/08 15:26:01 by psaulnie         ###   ########.fr       */
+/*   Updated: 2022/01/13 09:40:46 by psaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	get_coin_total(t_data *data)
 	}
 	if (total == 0)
 	{
-		printf("Map error : Not enough collectibles");
+		printf("Error\nNot enough collectibles\n");
 		destroy(0, &*data);
 	}
 	data->total_coin = total;
@@ -75,7 +75,7 @@ int	main(int argc, char *argv[])
 
 	if (argc != 2)
 	{
-		printf("Wrong number of arguments");
+		printf("Error\nWrong number of arguments");
 		return (-1);
 	}
 	data = init(argv);

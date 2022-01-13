@@ -6,7 +6,7 @@
 /*   By: psaulnie <psaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 14:54:50 by psaulnie          #+#    #+#             */
-/*   Updated: 2022/01/08 15:26:51 by psaulnie         ###   ########.fr       */
+/*   Updated: 2022/01/13 09:44:23 by psaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	end_program(char *str)
 {
-	printf("%s\n", str);
+	printf("Error\n%s\n", str);
 	exit(-1);
 }
 
@@ -36,7 +36,7 @@ static void	check_map_format(char *map)
 	}
 	if (is_valid)
 		return ;
-	printf("Wrong file format\n");
+	printf("Error\nWrong file format\n");
 	exit(-1);
 }
 
@@ -49,7 +49,7 @@ static char	**trim_nl(char **parsed_map, int i)
 	final_output = malloc(sizeof(char *) * (i + 1));
 	if (!final_output)
 	{
-		printf("Malloc error");
+		printf("Error\nMalloc error\n");
 		free_tab(parsed_map);
 		exit (-1);
 	}
@@ -58,7 +58,7 @@ static char	**trim_nl(char **parsed_map, int i)
 		final_output[counter] = ft_strtrim(parsed_map[counter], "\n");
 		if (!final_output)
 		{
-			printf("Malloc error");
+			printf("Error\nMalloc error\n");
 			free_tab(final_output);
 			exit (-1);
 		}

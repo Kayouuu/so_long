@@ -6,7 +6,7 @@
 /*   By: psaulnie <psaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 14:21:00 by psaulnie          #+#    #+#             */
-/*   Updated: 2022/01/10 09:43:53 by psaulnie         ###   ########.fr       */
+/*   Updated: 2022/01/13 09:42:32 by psaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static void	check(void **sprites, t_data *data)
 	{
 		if (sprites[i] == NULL)
 		{
-			printf("Error at sprites loading\n");
+			printf("Error\nError at sprites loading\n");
 			i = 0;
 			while (sprites[i] != NULL)
 			{

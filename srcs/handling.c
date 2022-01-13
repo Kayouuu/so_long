@@ -6,7 +6,7 @@
 /*   By: psaulnie <psaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 11:21:10 by psaulnie          #+#    #+#             */
-/*   Updated: 2022/01/08 15:39:34 by psaulnie         ###   ########.fr       */
+/*   Updated: 2022/01/13 09:40:25 by psaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	check(int condition_if, t_data *data)
 {
 	if (condition_if)
 	{
-		printf("Error : map not closed");
+		printf("Error\nMap not closed\n");
 		destroy(0, &*data);
 	}
 }
@@ -35,7 +35,7 @@ static void	check_other_char(t_data *data)
 			c = data->map.map[pos.y][pos.x];
 			if (c != 'P' && c != '0' && c != '1' && c != 'E' && c != 'C')
 			{
-				printf("Map error : character %c not handled\n", c);
+				printf("Error\nCharacter %c not handled\n", c);
 				destroy(0, &*data);
 			}
 			pos.x++;
@@ -84,9 +84,9 @@ void	check_map_error(t_data *data)
 			break ;
 	}
 	if (player_nbr != 1)
-		printf("Map error : wrong number of player");
+		printf("Error\nWrong number of player\n");
 	else if (pos.x != x_len)
-		printf("Map error : non equal length");
+		printf("Error\nNon equal length\n");
 	if (player_nbr != 1 || pos.x != x_len)
 		destroy(0, &*data);
 	check_walls(&*data, pos.y - 1);
