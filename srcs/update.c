@@ -6,7 +6,7 @@
 /*   By: psaulnie <psaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 14:29:37 by psaulnie          #+#    #+#             */
-/*   Updated: 2022/01/08 15:00:18 by psaulnie         ###   ########.fr       */
+/*   Updated: 2022/01/17 12:52:44 by psaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,11 @@ char	**backup_map(t_data *data)
 	while (i < len)
 	{
 		backup[i] = ft_strdup(data->map.map[i]);
+		if (!backup[i])
+		{
+			printf("Error\nMalloc error\n");
+			destroy(0, &*data);
+		}
 		i++;
 	}
 	backup[i] = NULL;

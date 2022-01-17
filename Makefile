@@ -6,7 +6,7 @@
 #    By: psaulnie <psaulnie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/06 13:55:52 by psaulnie          #+#    #+#              #
-#    Updated: 2022/01/12 15:36:50 by psaulnie         ###   ########.fr        #
+#    Updated: 2022/01/17 12:56:02 by psaulnie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,10 +47,10 @@ fclean: clean
 
 re: fclean all
 
-${LIBFT_LIB}:
+${LIBFT_LIB}: libs/libft/libft.h
 		make -C ${LIBFT}
 
-${MLX_LIB}:
+${MLX_LIB}: libs/minilibx/mlx.h
 		make -C ${MLX}
 		mv libs/minilibx/libmlx.dylib libmlx.dylib
 
